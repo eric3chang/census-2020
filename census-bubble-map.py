@@ -8,10 +8,11 @@ parser.add_argument('type')
 args = parser.parse_args()
 
 df = pd.read_csv(args.input)
+df.sort_values(['pop'], axis=0, ascending=[True], inplace=True)
 df.head()
 
 df['text'] = df['name'] + '<br>Population ' + (df['pop']).astype(str)
-limits = [(0,2),(3,10),(11,20),(21,50),(50,3000)]
+limits = [(0,15),(15,25),(25,70),(70,110),(110,150)]
 colors = ["royalblue","crimson","lightseagreen","orange","lightgrey"]
 cities = []
 scale = 20
